@@ -47,6 +47,9 @@ COPY --chown=0:1111 ./COPY_ROOT_0/ /
 ARG IMAGE_BASE
 RUN set -eo pipefail && /opt/ai-dock/bin/build/layer0/init.sh | tee /var/log/build.log
 
+RUN $COMFYUI_VENV_PIP install --no-cache-dir numpy==1.26.4
+RUN $API_VENV_PIP install --no-cache-dir numpy==1.26.4
+
 RUN echo "bust cache"
 
 # ----- LAYER 1 -----
